@@ -1,0 +1,46 @@
+[
+    {
+        "id": 1,
+        "title": "ALL's",
+        "duration": "2024.06 ~ 2024.07 (6주)",
+        "contributions": [
+        { "role": "기획", "percent": 45 },
+        { "role": "디자인", "percent": 90 },
+        { "role": "퍼블리싱", "percent": 100 },
+        { "role": "프론트엔드", "percent": 90 }
+        ],
+        "features": [
+        "전체 프로젝트 디자인 및 35p 분량 화면 구현",
+        "UI/UX, 타이머(시계), 슬라이드, 배너 등 구현",
+        "Swiper.js를 이용한 슬라이드 구현",
+        "Chart.js를 이용한 차트 구현"
+        ],
+        "tech": ["JSP", "Java", "MySQL", "Spring MVC"],
+        "tools": ["GitHub", "IntelliJ"],
+        "design": ["Figma", "Photoshop", "Illustrator"],
+        "images": [],
+        "thumbnail": []
+    },
+    {
+    "id": 2,
+    "title": "ALL's",
+    "duration": "2024.06 ~ 2024.07 (6주)",
+    "contributions": [
+        { "role": "기획", "percent": 45 },
+        { "role": "디자인", "percent": 90 },
+        { "role": "퍼블리싱", "percent": 100 },
+        { "role": "프론트엔드", "percent": 90 }
+    ],
+    "features": [
+        "전체 프로젝트 디자인 및 35p 분량 화면 구현",
+        "UI/UX, 타이머(시계), 슬라이드, 배너 등 구현",
+        "Swiper.js를 이용한 슬라이드 구현",
+        "Chart.js를 이용한 차트 구현"
+    ],
+    "tech": ["JSP", "Java", "MySQL", "Spring MVC"],
+    "tools": ["GitHub", "IntelliJ"],
+    "design": ["Figma", "Photoshop", "Illustrator"],
+    "images": [],
+    "thumbnail": []
+    }
+]
