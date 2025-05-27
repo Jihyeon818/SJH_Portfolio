@@ -1,46 +1,28 @@
 [
-    {
-        "id": 1,
-        "title": "ALL's",
-        "duration": "2024.06 ~ 2024.07 (6주)",
-        "contributions": [
-        { "role": "기획", "percent": 45 },
-        { "role": "디자인", "percent": 90 },
-        { "role": "퍼블리싱", "percent": 100 },
-        { "role": "프론트엔드", "percent": 90 }
-        ],
-        "features": [
-        "전체 프로젝트 디자인 및 35p 분량 화면 구현",
-        "UI/UX, 타이머(시계), 슬라이드, 배너 등 구현",
-        "Swiper.js를 이용한 슬라이드 구현",
-        "Chart.js를 이용한 차트 구현"
-        ],
-        "tech": ["JSP", "Java", "MySQL", "Spring MVC"],
-        "tools": ["GitHub", "IntelliJ"],
-        "design": ["Figma", "Photoshop", "Illustrator"],
-        "images": [],
-        "thumbnail": []
+  {
+    "id": 1,
+    "title": "Team Project 1 - All’s",
+    "duration": "2024.06 ~ 2024.07",
+    "contribution": "디자인 100%, 프론트엔드 90%",
+    "description": "React 기반 쇼핑몰 프로젝트",
+    "thumbnail": "p1_thumbnail",
+    "image": "p1_Devices",
+    "skills": {
+      "기술": ["JSP", "JAVA", "MySQL", "Spring MVC"],
+      "협업툴": ["GitHub", "IntelliJ"],
+      "디자인": ["Figma", "Photoshop", "Illustrator"]
     },
-    {
-    "id": 2,
-    "title": "ALL's",
-    "duration": "2024.06 ~ 2024.07 (6주)",
-    "contributions": [
-        { "role": "기획", "percent": 45 },
-        { "role": "디자인", "percent": 90 },
-        { "role": "퍼블리싱", "percent": 100 },
-        { "role": "프론트엔드", "percent": 90 }
-    ],
-    "features": [
-        "전체 프로젝트 디자인 및 35p 분량 화면 구현",
-        "UI/UX, 타이머(시계), 슬라이드, 배너 등 구현",
-        "Swiper.js를 이용한 슬라이드 구현",
-        "Chart.js를 이용한 차트 구현"
-    ],
-    "tech": ["JSP", "Java", "MySQL", "Spring MVC"],
-    "tools": ["GitHub", "IntelliJ"],
-    "design": ["Figma", "Photoshop", "Illustrator"],
-    "images": [],
-    "thumbnail": []
-    }
+    "details": [
+      {
+        "title": "화면설계 및 디자인",
+        "image": "p1_UI",
+        "content": "Figma를 활용해 전체 35페이지 UI 디자인을 구성하였습니다다."
+      },
+      {
+        "title": "타이머 기능 개발",
+        "image": "p1_timer_detail",
+        "content": "JSP, Spring 기반으로 서버/클라이언트 타이머 기능을 개발하였습니다."
+      }
+    ]
+  }
 ]

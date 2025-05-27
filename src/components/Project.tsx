@@ -1,76 +1,116 @@
-import React from "react";
-import projectData from "../data/projects.json";
+// src/components/ProjectDetailPopup.tsx
+import React, { useEffect } from 'react';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
+import projectData from '../data/projects.json';
+import { skillIcons } from "../components/skillIcons";
+import { p1_Devices, p1_UI, p1_timer_detail } from "../images/index";
 
-
-type Contribution = {
-  role: string;
-  percent: number;
-};
-
-type Project = {
-  id: number;
-  title: string;
-  duration: string;
-  contributions: Contribution[];
-  features: string[];
-  tech: string[];
-  tools: string[];
-  design: string[];
-  images: string[];
-};
-
-type Props = {
+type ProjectDetailPopupProps = {
   onClose: () => void;
   projectId: number;
 };
 
-const ProjectDetailPopup: React.FC<Props> = ({ onClose, projectId }) => {
-  const project: Project | undefined = projectData.find((p) => p.id === projectId);
+const ProjectDetailPopup = ({ onClose, projectId }: ProjectDetailPopupProps) => {
+  const project = projectData.find((p) => p.id === projectId);
+
+  const imageMap: { [key: string]: string } = {
+    p1_Devices,
+    p1_UI,
+    p1_timer_detail
+  };
+
+  useEffect(() => {
+    AOS.init({ duration: 800 });
+  }, []);
 
   if (!project) return null;
 
-
   return (
-    <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50">
-      <div className="bg-white rounded-2xl shadow-lg w-[90%] max-w-5xl max-h-[90%] overflow-y-auto p-6 relative">
+    <div className="fixed inset-0 z-50 bg-black bg-opacity-60 flex justify-center items-center overflow-y-auto px-4 py-10">
+      <div className="bg-white w-full max-w-6xl rounded-lg p-6 relative">
+        {/* Close Button */}
         <button
-          className="absolute top-4 right-4 text-gray-600 hover:text-black text-2xl font-bold"
           onClick={onClose}
+          className="absolute top-4 right-4 text-gray-500 hover:text-black text-2xl"
+          aria-label="Close"
         >
           &times;
         </button>
 
-        <h2 className="text-2xl font-bold mb-4">{project.title}</h2>
-        <p className="mb-2 text-gray-600">진행일정: {project.duration}</p>
+        {/* 상단 소개 (이미지 + 설명) */}
+        <div className="flex flex-col lg:flex-row gap-6 mb-10" data-aos="fade-up">
+          <div className="flex-1">
+            <img
+              src={imageMap[project.image]}
+              alt={`${project.title} main`}
+              className="rounded-lg w-full shadow"
+            />
+          </div>
+          <div className="flex-1 space-y-2 text-sm">
+            <h2 className="text-2xl font-bold mb-2">{project.title}</h2>
+            <p><strong>진행기간:</strong> {project.duration}</p>
+            <p><strong>기여도:</strong> {project.contribution}</p>
+            <p><strong>설명:</strong> {project.description}</p>
+            <div className="flex flex-col gap-2 mt-2">
 
-        <div className="mb-4">
-          <strong>기여도</strong>
-          <ul className="list-disc ml-6">
-            {project.contributions.map((item, index) => (
-              <li key={index}>{item.role}: {item.percent}%</li>
-            ))}
-          </ul>
+              {Object.entries(project.skills).map(([category, skills]) => (
+                <div key={category} className="flex flex-row gap-3 items-start mb-4">
+                  <h4 className="w-24 font-semibold">{category}</h4>
+                  <div className="flex flex-wrap gap-2">
+                    {skills.map((skill) => {
+                      const skillInfo = skillIcons.find((item) => item.name === skill);
+                      return (
+                        <div
+                          key={skill}
+                          style={{
+                            display: "flex",
+                            alignItems: "center",
+                            gap: "4px",
+                            backgroundColor: skillInfo?.color || "#ccc",
+                            padding: "6px 10px",
+                            borderRadius: "6px",
+                            color: skillInfo?.font || "white",
+                            fontSize: "14px",
+                          }}
+                        >
+                          {skillInfo?.icon && <skillInfo.icon size={16} />}
+                          <span>{skill}</span>
+                        </div>
+                      );
+                    })}
+                  </div>
+                </div>
+              ))}
+
+
+            </div>
+          </div>
         </div>
 
-        <div className="mb-4">
-          <strong>주요 역할</strong>
-          <ul className="list-disc ml-6">
-            {project.features.map((feature, index) => (
-              <li key={index}>{feature}</li>
-            ))}
-          </ul>
-        </div>
-
-        <div className="mb-4">
-          <strong>사용 기술:</strong> {project.tech.join(", ")}<br />
-          <strong>협업 툴:</strong> {project.tools.join(", ")}<br />
-          <strong>디자인:</strong> {project.design.join(", ")}
-        </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          {project.images.map((src, index) => (
-            <img key={index} src={src} alt={`screenshot-${index}`} className="rounded border" />
+        {/* 상세 섹션들 (2열 구조) */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+          {project.details?.map((section: any, index: number) => (
+            <div key={index} className="space-y-2" data-aos="fade-up" data-aos-delay={index * 100}>
+              <h3 className="text-xl font-semibold border-b pb-1">{section.title}</h3>
+              <img
+                src={imageMap[section.image]}
+                alt={section.title}
+                className="rounded shadow-md"
+              />
+              <p className="text-sm">{section.content}</p>
+            </div>
           ))}
+        </div>
+
+        {/* 하단 버튼 */}
+        <div className="mt-10 text-center">
+          <button
+            onClick={onClose}
+            className="bg-gray-800 text-white px-6 py-2 rounded hover:bg-gray-700 transition"
+          >
+            닫기
+          </button>
         </div>
       </div>
     </div>
