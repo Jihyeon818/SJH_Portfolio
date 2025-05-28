@@ -41,10 +41,13 @@ const Header = () => {
   };
 
   return (
-    <header className={`fixed top-0 left-0 right-0 z-50 w-full transition-colors duration-300 ${scrolled ? "bg-gray-100" : ""}`}>
+    <header className={`fixed top-0 left-0 right-0 z-10 w-full transition-colors duration-300 ${scrolled ? "bg-gray-100" : ""}`}>
       <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
         <div className={`text-left ${scrolled ? "text-[#12415e]" : "text-white"}`}>
-          <h1 className="text-2xl font-bold leading-tight">Jihyeon<br />Portfolio</h1>
+          <h1 className="text-2xl font-bold leading-tight">
+            <p>Jihyeon</p>
+            <p className="pl-4 -mt-2">Portfolio</p>
+          </h1>
         </div>
 
         <div className="bg-black rounded-full px-8 py-3 flex items-center space-x-4">

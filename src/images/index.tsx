@@ -1,13 +1,12 @@
 // project1
-import p1_chart_month from "./project1/project1_chart_month.png";
+import p1_chart from "./project1/project1_chart.png";
 import p1_design_guide from "./project1/project1_design_guide.png";
 import p1_Devices from "./project1/project1_Devices.png";
 import p1_file_folder from "./project1/project1_file_folder.png";
-import p1_mobile_grid from "./project1/project1_mobile_grid.png";
-import p1_pc_grid from "./project1/project1_pc_grid.png";
+import p1_grid from "./project1/project1_grid.png";
 import p1_slide from "./project1/project1_silde.png";
-import p1_tab_grid from "./project1/project1_tab_grid.png";
 import p1_thumbnail from "./project1/project1_thumbnail.png";
+import p1_timer from "./project1/project1_timer.png";
 import p1_timer_DB from "./project1/project1_timer_DB.png";
 import p1_timer_detail from "./project1/project1_timer_detail.png";
 import p1_timer_mapping from "./project1/project1_timer_mapping.png";
@@ -30,19 +29,19 @@ import phone from "./phone.png";
 import tablet from "./tablet.png";
 import headers from "./headers_logo.png";
 import ncloud from "./ncloud.png";
+import developBG from "./developBG.jpg";
 
 // export all
 export {
   // project1
-  p1_chart_month,
+  p1_chart,
   p1_design_guide,
   p1_Devices,
   p1_file_folder,
-  p1_mobile_grid,
-  p1_pc_grid,
+  p1_grid,
   p1_slide,
-  p1_tab_grid,
   p1_thumbnail,
+  p1_timer,
   p1_timer_DB,
   p1_timer_detail,
   p1_timer_mapping,
@@ -65,5 +64,6 @@ export {
   tablet,  
   headers,
   ncloud,
+  developBG
 };
 

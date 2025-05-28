@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import ProjectDetailPopup from '../components/Project';
 import projectData from "../data/projects.json";
-import { tablet, laptop, phone, p1_thumbnail, headers, ncloud } from "../images/index";
+import { p1_thumbnail, headers, ncloud, developBG } from "../images/index";
 import { skillIcons } from "../components/skillIcons";
 
 const Main = () => {
@@ -41,7 +41,7 @@ const Main = () => {
   return (
     <>
       <section
-        className={`flex flex-col items-center text-center px-6 pt-60 pb-5 relative overflow-hidden max-w-6xl mx-auto`}
+        className={`flex flex-col items-center text-center pt-60 pb-5 relative overflow-hidden mx-auto`}
         style={{ position: 'sticky', top: 0 }}
       >
         <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-10">
@@ -53,19 +53,20 @@ const Main = () => {
           </p>
         </div>
 
-        <div className="absolute inset-0 z-0 pointer-events-none">
-          <img src={tablet} alt="tablet" className="absolute top-[20%] left-[25%] sm:top-[18%] sm:left-[20%] md:top-[15%] md:left-[22%] lg:top-[8%] lg:left-[25%] w-20 sm:w-28 md:w-36 lg:w-44 opacity-10 transition-all duration-700" />
-          <img src={laptop} alt="laptop" className="absolute bottom-[28%] right-[20%] sm:bottom-[18%] sm:right-[15%] md:bottom-[15%] md:right-[18%] lg:bottom-[13%] lg:right-[20%] w-36 sm:w-48 md:w-60 lg:w-72 opacity-10 transition-all duration-700" />
-          <img src={phone} alt="phone" className="absolute top-[10%] left-1/2 transform -translate-x-1/2 w-10 sm:w-12 md:w-16 lg:w-20 opacity-10 transition-all duration-700" />
+        <div className="absolute inset-0 w-full h-[600px] overflow-hidden z-0">
+          <img src={developBG} alt="" className="w-full h-full object-cover opacity-10" />
         </div>
 
         <p className="mt-10 text-xs animate-pulse text-gray-400 z-20 relative">^ 더 알아보기</p>
       </section>
 
-      <div id="main" className="relative z-20 bg-white py-10 rounded-t-3xl shadow-md" style={{ boxShadow: '1px -5px 5px -2px rgba(0, 0, 0, 0.1)' }}>
+      <div id="main" className="relative z-5 bg-white py-10 rounded-t-3xl shadow-md" style={{ boxShadow: '1px -5px 5px -2px rgba(0, 0, 0, 0.1)' }}>
         {/* About me */}
         <section id="about-me" className="text-black px-6 py-5 rounded-t-3xl max-w-6xl mx-auto">
-          <h3 className="text-2xl font-bold mb-4">About me</h3>
+          <div className="flex items-center gap-4 mb-4">
+            <h2 className="text-3xl font-bold whitespace-nowrap">About me</h2>
+            <div className="flex-1 border-t border-black"></div>
+          </div>
           <section id="about" className="bg-white px-6 py-3 max-w-6xl mx-auto">
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               <div className="bg-blue-50 p-6 rounded-xl shadow-md animate-slide-down">
@@ -97,7 +98,10 @@ const Main = () => {
 
         {/* Skills */}
         <section id="skills" className="text-black px-6 py-6 max-w-6xl mx-auto">
-          <h3 className="text-2xl font-bold mb-6">Skills</h3>
+          <div className="flex items-center gap-4 mb-4">
+            <div className="flex-1 border-t border-black"></div>
+            <h2 className="text-3xl font-bold whitespace-nowrap">Skills</h2>
+          </div>
 
           {/* 모바일: 아이콘만, hover 시 툴팁 */}
           <div className="sm:hidden flex flex-col gap-6">
@@ -105,26 +109,28 @@ const Main = () => {
               const skillsInCategory = skillIcons.filter((skill) => skill.category === category);
               return (
                 <div key={category} className="flex gap-3 overflow-x-auto px-2">
-                  <span className="font-bold min-w-[100px]">{category} </span>
-                  {skillsInCategory.map(({ name, icon: Icon, color, font }) => (
-                    <div
-                      key={name}
-                      className="flex-shrink-0 relative group rounded-full p-2"
-                      style={{ backgroundColor: color, cursor: "default" }}
-                    >
-                      <Icon size={24} color={font} />
-
-                      {/* 툴팁 */}
-                      <span
-                        className="absolute bottom-full mb-2 left-1/2 transform -translate-x-1/2
-                          whitespace-nowrap bg-black text-white text-xs rounded px-2 py-1
-                          opacity-0 group-hover:opacity-100 pointer-events-none transition-opacity"
-                        style={{ zIndex: 10 }}
+                  <span className="font-bold min-w-[100px] shrink-0">{category}</span>
+                  <div className="flex gap-3 overflow-x-auto scrollbar-hide">
+                    {skillsInCategory.map(({ name, icon: Icon, color, font }) => (
+                      <div
+                        key={name}
+                        className="flex-shrink-0 relative group rounded-full p-2"
+                        style={{ backgroundColor: color, cursor: "default" }}
                       >
-                        {name}
-                      </span>
-                    </div>
-                  ))}
+                        <Icon size={24} color={font} />
+
+                        {/* 툴팁 */}
+                        <span
+                          className="absolute bottom-full mb-2 left-1/2 transform -translate-x-1/2
+                            whitespace-nowrap bg-black text-white text-xs rounded px-2 py-1
+                            opacity-0 group-hover:opacity-100 pointer-events-none transition-opacity"
+                          style={{ zIndex: 10 }}
+                        >
+                          {name}
+                        </span>
+                      </div>
+                    ))}
+                  </div>
                 </div>
               );
             })}
@@ -135,11 +141,7 @@ const Main = () => {
             {categories.map((category) => {
               const skillsInCategory = skillIcons.filter((skill) => skill.category === category);
               return (
-                <div
-                  key={category}
-                  className="flex items-center gap-4"
-                  style={{ whiteSpace: "nowrap" }}
-                >
+                <div key={category} className="flex items-center gap-4" style={{ whiteSpace: "nowrap" }}>
                   <span className="font-bold min-w-[100px]">{category} </span>
                   <div className="flex gap-2 overflow-x-auto">
                     {skillsInCategory.map(({ name, icon: Icon, color, font }) => (
@@ -162,7 +164,10 @@ const Main = () => {
         {/* Projects */}
         <div className="bg-gray-100">
           <section id="projects" className="bg-gray-100 text-black px-6 py-8 max-w-6xl mx-auto">
-            <h3 className="text-2xl font-bold mb-4 border-b border-gray-300 pb-2">Projects</h3>
+          <div className="flex items-center gap-4 mb-4">
+            <h2 className="text-3xl font-bold whitespace-nowrap">Projects</h2>
+            <div className="flex-1 border-t border-black"></div>
+          </div>
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
               {projectData.map((project) => (
                 <div key={project.id} className="bg-white rounded-2xl shadow-md p-4 cursor-pointer transform transition-transform hover:scale-105 hover:shadow-xl" onClick={() => openPopup(project.id)}>
@@ -204,7 +209,10 @@ const Main = () => {
 
         {/* Career & Education */}
         <section id="Career" className="bg-white text-black px-6 py-8 max-w-6xl mx-auto">
-          <h3 className="text-2xl font-bold mb-4 border-b border-gray-300 pb-2">Career & Education</h3>
+          <div className="flex items-center gap-4 mb-4">
+            <div className="flex-1 border-t border-black"></div>
+            <h2 className="text-3xl font-bold whitespace-nowrap">Career & Education</h2>
+          </div>
           <div className="space-y-6">
             <div className="flex gap-4">
               <div className="w-20 h-20 rounded-full bg-white flex items-center justify-center shadow-md">
