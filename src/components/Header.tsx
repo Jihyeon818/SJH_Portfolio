@@ -7,7 +7,6 @@ const sections = ["About me", "Skills", "Projects", "Career"];
 const Header = () => {
   const [activeSection, setActiveSection] = useState("About me");
   const [scrolled, setScrolled] = useState(false);
-  const email = "jihyeons.dev@gmail.com";
   const [tooltipVisible, setTooltipVisible] = useState(false);
   const [tooltipText, setTooltipText] = useState("이메일 주소 복사");
   const [tooltipVisibleForGithub, setTooltipVisibleForGithub] = useState(false);
@@ -15,22 +14,36 @@ const Header = () => {
   useEffect(() => {
     const handleScroll = () => {
       const y = window.scrollY;
+      const windowHeight = window.innerHeight;
+      const scrollHeight = document.body.scrollHeight;
+      const buffer = 200; // 페이지 하단에서 200px 이내일 때 Career로 간주
+
       setScrolled(y > 200);
 
-      const offsetData = sections.map((section) => {
-        const id = section.toLowerCase().replace(/ /g, "-");
-        const el = document.getElementById(id);
-        return { section, offsetTop: el?.offsetTop ?? Number.MAX_SAFE_INTEGER };
-      });
+    const offsetData = sections.map((section) => {
+      const id = section.toLowerCase().replace(/ /g, "-");
+      const el = document.getElementById(id);
+      return {
+        section,
+        top: el?.getBoundingClientRect().top ?? Number.MAX_SAFE_INTEGER,
+        absoluteTop: el ? window.scrollY + el.getBoundingClientRect().top : Number.MAX_SAFE_INTEGER,
+      };
+    });
 
-      const current = offsetData
-        .filter((data) => y >= data.offsetTop - 50)
-        .sort((a, b) => b.offsetTop - a.offsetTop)[0];
+    const isNearBottom = windowHeight + y >= scrollHeight - buffer;
 
-      if (current) {
-        setActiveSection(current.section);
-      }
-    };
+    if (isNearBottom) {
+      setActiveSection("Career");
+      return;
+    }
+
+    const current = offsetData
+    .filter((data) => y >= data.absoluteTop - 200)
+    .sort((a, b) => b.absoluteTop - a.absoluteTop)[0];
+        if (current) {
+          setActiveSection(current.section);
+        }
+      };
 
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
@@ -38,11 +51,23 @@ const Header = () => {
 
 
   const handleClick = (section: string) => {
+  if (section === "Career") {
+    const scrollHeight = document.body.scrollHeight;
+    const windowHeight = window.innerHeight;
+    const offset = 150; // 페이지 가장 아래에서 offset만큼 위로
+
+    window.scrollTo({
+      top: scrollHeight - windowHeight - offset,
+      behavior: "smooth",
+    });
+  } else {
     const el = document.getElementById(section.toLowerCase().replace(/ /g, "-"));
     if (el) {
       el.scrollIntoView({ behavior: "smooth" });
     }
-  };
+  }
+};
+
 
   const copyEmail = () => {
     const email = 'jihyeons.dev@gmail.com';
@@ -78,7 +103,7 @@ const Header = () => {
     <header className={`fixed top-0 left-0 right-0 z-10 w-full transition-colors duration-300 ${scrolled ? "bg-gray-100" : ""}`}>
       <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
         <div className={`text-left ${scrolled ? "text-[#12415e]" : "text-white"}`}>
-          <h1 className="lg:text-2xl md:text-xl sm:text-xl font-bold leading-tight">
+          <h1 className="font-paytone lg:text-2xl md:text-xl sm:text-xl font-bold leading-tight">
             <p>Jihyeon</p>
             <p className="pl-4 -mt-2">Portfolio</p>
           </h1>

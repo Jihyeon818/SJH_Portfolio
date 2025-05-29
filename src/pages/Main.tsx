@@ -6,6 +6,7 @@ import { skillIcons } from "../components/skillIcons";
 import { IoIosArrowUp, IoIosArrowBack , IoIosArrowForward  } from "react-icons/io";
 import { FaRegFilePdf } from "react-icons/fa6";
 import PdfModal from "../components/PdfModal";
+import ScrollToTopButton from '../components/ScrollToTopButton'; 
 
 const Main = () => {
   const [isPopupOpen, setIsPopupOpen] = useState(false);
@@ -101,7 +102,7 @@ const Main = () => {
         </p>
       </section>
 
-      <div id="main" className="relative z-5 bg-white py-10 rounded-t-3xl shadow-md" style={{ boxShadow: '1px -5px 5px -2px rgba(0, 0, 0, 0.1)' }}>
+      <div id="main" className="relative z-5 bg-white pt-10 rounded-t-3xl shadow-md" style={{ boxShadow: '1px -5px 5px -2px rgba(0, 0, 0, 0.1)' }}>
         {/* About me */}
         <section id="about-me" className="text-black px-6 py-5 rounded-t-3xl max-w-6xl mx-auto">
           <div className="flex items-center gap-4 mb-4">
@@ -260,9 +261,22 @@ const Main = () => {
               {projectData.map((project) => {
                 const projectSkills = getSkillList(project.skills).slice(0, 5); // 각 프로젝트별 상위 5개 추출
                 return(
-                <div key={project.id} className="bg-white rounded-2xl shadow-md p-4 cursor-pointer transform transition-transform hover:scale-105 hover:shadow-xl" onClick={() => openPopup(project.id)}>
-                  <img src={imageMap[project.thumbnail]} alt={`${project.title} thumbnail`} className="rounded-lg mb-2 w-full h-32 object-cover object-top" />
-                  <h4 className="text-xl font-semibold mb-1">{project.title}</h4>
+                    <div
+                      key={project.id}
+                      className="bg-white rounded-2xl shadow-md p-4 cursor-pointer transform transition-transform hover:scale-105 hover:shadow-xl"
+                      onClick={() => openPopup(project.id)}
+                      tabIndex={0}
+                      onKeyDown={(e) => {
+                        if (e.key === 'Enter' || e.key === ' ') {
+                          e.preventDefault(); // 스페이스 키의 기본 스크롤 방지
+                          openPopup(project.id);
+                        }
+                      }}
+                      role="button" 
+                      aria-pressed="false" //
+                    >
+                    <img src={imageMap[project.thumbnail]} alt={`${project.title} thumbnail`} className="rounded-lg mb-2 w-full h-32 object-cover object-top" />
+                  <h4 className="text-[#113923] text-xl font-extrabold mb-1">{project.title}</h4>
                   <p className="text-gray-600 text-sm mb-2">{project.duration}</p>
                   <ul className="text-gray-600 text-xs mb-3 list-disc list-inside">
                     {project.part.map((item, index) => (
@@ -415,6 +429,7 @@ const Main = () => {
       </div>
 
       <footer className="bg-[#1d5b39] text-white text-center py-6">
+        <ScrollToTopButton />
         <p className="text-sm">©2025. Shin Ji Hyeon. All rights reserved</p>
       </footer>
     </>

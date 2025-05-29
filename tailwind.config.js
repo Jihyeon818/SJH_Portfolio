@@ -6,6 +6,9 @@ module.exports = {
   ],
   theme: {
     extend: {
+      fontFamily: {
+        paytone: ['"Paytone One"', 'sans-serif'],
+      },
       keyframes: {
         'slide-down': {
           '0%': { opacity: '0', transform: 'translateY(-40px)' },

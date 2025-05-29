@@ -1,11 +1,11 @@
 [
   {
     "id": 3,
-    "title": "지현 포토폴리오 사이트",
+    "title": "Jihyeon Portfolio",
     "subtitle" : "Team Project 3",
     "summary": "TypeScript, Tailwindcss를 사용하여 개인 포토폴리오 사이트를 제작했습니다.",
     "git": "https://github.com/Jihyeon818/jh_portfolio",
-    "gitname": "Jihyeon818",
+    "gitname": "Portfolio 깃허브",
     "duration": "2025.05 ~ 2025.05",
     "teamSize": "1명",
     "contributions": [
@@ -83,7 +83,7 @@
     "subtitle" : "Team Project 2 ",
     "summary": "스프링 부트와 리액트를 활용한 직장인 식사 추천, 레시피 공유, 기프티콘, 포인트 게임 모바일 웹 사이트를 제작하였습니다.",
     "git": "https://github.com/Jihyeon818/BOBPLE",
-    "gitname": "Jihyeon818",
+    "gitname": "BOBPLE 깃허브",
     "duration": "2024.07 ~ 2024.08",
     "teamSize": "6명",
     "contributions": [
@@ -217,7 +217,7 @@
     "subtitle" : "Team Project 1 ",
     "summary": "스프링 MVC, JSP를 사용하여 스터디 그룹 및 개인 공부 시간, 일정 관리 웹사이트를 제작했습니다.",
     "git": "https://github.com/Jihyeon818/All-s_project",
-    "gitname": "Jihyeon818",
+    "gitname": "All’s 깃허브브",
     "duration": "2024.06 ~ 2024.07",
     "teamSize": "5명",
     "contributions": [

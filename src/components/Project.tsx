@@ -147,8 +147,8 @@ const ProjectDetailPopup = ({ onClose, projectId }: ProjectDetailPopupProps) => 
         <div className="flex flex-col lg:flex-row gap-6 mb-10" data-aos="fade-up">
           <div className="flex-1">
             <div className="mb-3">
-              <h3 className="text-xl font-bold mb-1">{project.subtitle}</h3>
-              <h2 className="text-4xl font-bold mb-2">{project.title}</h2>
+              <h3 className="font-paytone text-xl font-bold text-[#d6960dfb] ">{project.subtitle}</h3>
+              <h2 className="font-paytone text-4xl font-bold mb-2 text-[#1d5b39]">{project.title}</h2>
               <div className="flex justify-between">
                 <p className="text-xs max-w-80">{project.summary}</p>
                 <a href={project.git} target='blank' className="text-xs flex items-center"><FaGithub/><span className="ml-1">{project.gitname}</span></a>
