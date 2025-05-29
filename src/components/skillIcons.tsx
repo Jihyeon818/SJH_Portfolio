@@ -15,10 +15,10 @@ interface SkillItem {
 
 export const skillIcons: SkillItem[] = [
   // Front-end
-  { name: "JavaScript", icon: SiTypescript, color: "#3178C6", font: "#fff", category: "Front-end" },
-  { name: "TypeScript", icon: FaJsSquare, color: "#F7DF1E", font: "#000", category: "Front-end" },
+  { name: "JavaScript", icon: FaJsSquare, color: "#F7DF1E", font: "#000", category: "Front-end" },
+  { name: "TypeScript", icon: SiTypescript, color: "#3178C6", font: "#fff", category: "Front-end" },
   { name: "React", icon: SiReact, color: "#61DAFB", font: "#fff", category: "Front-end" },
-  { name: "Tailwindcss", icon: SiTailwindcss, color: "#3178C6", font: "#fff", category: "Front-end" },
+  { name: "Tailwindcss", icon: SiTailwindcss, color: "#39A5B6", font: "#fff", category: "Front-end" },
   { name: "JSP", icon: FaJava, color: "#EDEDED", font: "#E34F26", category: "Front-end" },
   { name: "HTML5", icon: SiHtml5, color: "#E34F26", font: "#fff", category: "Front-end" },
   { name: "CSS3", icon: SiCss3, color: "#1572B6", font: "#fff", category: "Front-end" },
