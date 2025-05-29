@@ -17,8 +17,7 @@
 
 - **Email**: jihyeons.dev@gmail.com
 - **GitHub**: [github.com/Jihyeon818](https://github.com/Jihyeon818)  
-<!-- - **Blog/Portfolio**: [포트폴리오 사이트](https://jihyeon818.github.io/jh_portfolio) -->
-🔗 [포트폴리오 사이트 바로가기](https://jihyeon818.github.io/jh_portfolio)
+- **Portfolio**: [포트폴리오 사이트](https://jihyeon818.github.io/SJH_Portfolio/)
 
 
 ![포트폴리오 미리보기](./src/images/project3/project3_main.png)
