@@ -20,8 +20,31 @@ module.exports = {
         'slide-down': 'slide-down 0.8s ease-out forwards',
         'slide-up': 'slide-up 0.8s ease-out forwards',
       },
-
+      extend: {
+        keyframes: {
+          'zoom-in': {
+            '0%': { transform: 'scale(0.95)', opacity: '0' },
+            '100%': { transform: 'scale(1)', opacity: '1' },
+          },
+        },
+        animation: {
+          'zoom-in': 'zoom-in 0.3s ease-out forwards',
+        },
+      },
     },
   },
-  plugins: [],
+  plugins: [
+    require('tailwind-scrollbar-hide'),
+    function ({ addUtilities }) {
+      addUtilities({
+        '.hide-scrollbar': {
+          'scrollbar-width': 'none', /* Firefox */
+          '-ms-overflow-style': 'none', /* IE 10+ */
+        },
+        '.hide-scrollbar::-webkit-scrollbar': {
+          display: 'none', /* Chrome/Safari/Webkit */
+        },
+      });
+    },
+  ],
 }

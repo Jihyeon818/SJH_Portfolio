@@ -1,5 +1,217 @@
 [
   {
+    "id": 3,
+    "title": "지현 포토폴리오 사이트",
+    "subtitle" : "Team Project 3",
+    "summary": "TypeScript, Tailwindcss를 사용하여 개인 포토폴리오 사이트를 제작했습니다.",
+    "git": "https://github.com/Jihyeon818/jh_portfolio",
+    "gitname": "Jihyeon818",
+    "duration": "2025.05 ~ 2025.05",
+    "teamSize": "1명",
+    "contributions": [
+      { "role": "기획", "percentage": "100%" },
+      { "role": "디자인", "percentage": "100%" },
+      { "role": "협업 및 운영", "percentage": "100%" },
+      { "role": "프론트엔드", "percentage": "100%" }
+    ],
+    "part": [
+      "전체 프론트 디자인 및 화면 구현",
+      "TypeScript를 이용한 개발 환경 구성",
+      "TailwindCSS 반응형 웹 구현",
+      "json을 이용한 데이터 저장 및 출력",
+      "인터랙션 디자인을 고려한 UIUX 제공공"
+    ],
+    "thumbnail": "p3_thumbnail",
+    "image": "p3_Devices",
+    "alt": "프론트엔드 개발자 ‘신지현’에 대해 나타내기 위해 저에 대한 소개를 가장 먼저 확인할 수 있도록 하였습니다. 화려한 애니메이션 효과보다 저에 대한 소개를 한 눈에 확인하도록 깔끔한 디자인과 분류된 정보를 제공합니다.",
+    "skills": {
+      "techStack": ["TypeScript", "Tailwindcss", "React"],
+      "tools": ["GitHub", "VSCode"],
+      "designTools": ["Figma", "Photoshop", "Illustrator"]
+    },
+    "details": [
+      {
+        "title": "화면설계 및 디자인",
+        "blocks": [
+          { "type": "text", "content": "· 메인 페이지 기획 및 포토폴리오 기반 피그마를 이용한 전체 화면 디자인" },
+          { "type": "image", "src": "p3_UI", "alt": "메인과 포토폴리오 페이지 화면 구성" }
+        ]
+      },
+      {
+        "title": "애니메이션을 활용한 사용자 경험 향상",
+        "blocks": [
+          { "type": "text", "content": "· AOS(Animate On Scroll) 라이브러리를 사용하여 프로젝트 팝업업 진입 시 부드러운 인터랙션을 제공하고, 사용자의 주목도를 높임" },
+          { "type": "image", "src": "p3_scrollAOS", "alt": "AOS 속성이 적용된 컴포넌트 코드 예시" },
+          { "type": "text", "content": "· 모든 주요 섹션에 'fade-up', 'fade-in' 등의 효과를 적용하여 정적인 화면이 아닌 동적인 구성 제공" },
+          {
+            "type": "code",
+            "language": "tsx",
+            "content": "{/* 상세 섹션들 */}\n<div className=\\\"grid grid-cols-1 lg:grid-cols-2 gap-10 transition-all duration-500 min-h-[200px]\\\">\n  {project.details.map((section, sectionIdx) => (\n    <div key={sectionIdx} className=\\\"space-y-2\\\" data-aos=\\\"fade-up\\\">"
+          }
+
+        ]
+      },
+      {
+        "title": "UIUX",
+        "blocks": [
+          { "type": "text", "content": "· 나에 대해 보여주기 위하여 첫 화면에 개발자로서 '신지현'에 대한 내용을 한 눈에 볼 수 있도록 작성" },
+          { "type": "image", "src": "p3_main", "alt": "메인 화면에 About me와 Skills를 이용해 나를 설명하는 메인 화면" },
+          { "type": "text", "content": "· 진행한 프로젝트의 상세 내용과 담당했던 역할을 보여주기 위한 프로젝트 상세 팝업 제공" },
+          { "type": "image", "src": "p3_projectDetail", "alt": "진행했던 프로젝트 내용을 보여주는 프로젝트 팝업" }
+        ]
+      },
+      {
+        "title": "데이터 기반 동적 화면 구성",
+        "blocks": [
+          { "type": "text", "content": "· 페이지 구조를 하드코딩하지 않고, JSON 형식의 데이터를 기반으로 컴포넌트에서 동적으로 렌더링되도록 설계" },
+          { "type": "image", "src": "p3_jsonData", "alt": "projectDetail.tsx에서 JSON 데이터를 기반으로 섹션을 렌더링하는 코드" },
+          {
+            "type": "code",
+            "language": "tsx",
+            "content": "// JSON 기반 동적 구성\n{project.details.map((section, sectionIdx) => (\n  <div key={sectionIdx}>\n    <h3>{section.title}</h3>\n    {section.blocks.map((block, idx) => renderBlock(block, idx))}\n  </div>\n))"
+          },
+          { "type": "text", "content": "· 자주 사용되는 skill을 icon형식으로 제공하기 위한 tsx파일 분리하여 유지보수와 확장에 용이한 구조 구현" },
+          { "type": "image", "src": "p3_skills", "alt": "frontend, backend 등 스킬들에 대한 데이터를 관리하는 코드" },
+          { "type": "subtext", "content": "* Main 코드 분리 및 career 데이터 json형식 변환, 컴포넌트화 진행 예정" }
+        ]
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "title": "BOBPLE",
+    "subtitle" : "Team Project 2 ",
+    "summary": "스프링 부트와 리액트를 활용한 직장인 식사 추천, 레시피 공유, 기프티콘, 포인트 게임 모바일 웹 사이트를 제작하였습니다.",
+    "git": "https://github.com/Jihyeon818/BOBPLE",
+    "gitname": "Jihyeon818",
+    "duration": "2024.07 ~ 2024.08",
+    "teamSize": "6명",
+    "contributions": [
+      { "role": "기획", "percentage": "45%" },
+      { "role": "디자인", "percentage": "100%" },
+      { "role": "협업 및 운영", "percentage": "40%" },
+      { "role": "프론트엔드", "percentage": "50%" },
+      { "role": "백엔드", "percentage": "5%" }
+    ],
+    "part": [
+      "프론트 파일 구조 관리",
+      "UIUX, 디자인(UI, 아이콘, 배너 등) 담당",
+      "주요 화면인 메인, 레시피, 맛집, 마이페이지 제작",
+      "Router 관리",
+      "React Slick을 이용한 Slide 제작"
+    ],
+    "thumbnail": "p2_thumbnail",
+    "image": "p2_Devices",
+    "alt": "주요 기능인 검색, 레시피, 음식점 추천, 주변지도, 마이페이지로 크게 분류하여 공통 영역을 지정하였으며, 사용자 위치 기반 서비스를 제공하여 모바일 환경을 기준으로 제작하고, 다크모드를 지원합니다",
+    "skills": {
+      "techStack": ["React", "JAVA", "MySQL", "Spring Boot"],
+      "tools": ["GitHub", "IntelliJ"],
+      "designTools": ["Figma", "Photoshop", "Illustrator"]
+    },
+    "details": [
+      {
+        "title": "화면설계 및 디자인",
+        "blocks": [
+          { "type": "text", "content": "· 기획 내용을 바탕으로 피그마를 이용한 전체 54p 화면 디자인" },
+          { "type": "image", "src": "p2_UI", "alt": "메인부터 전체 54개 페이지 화면 구성" },
+          { "type": "text", "content": "· 메인 컬러 및 스타일 가이드 작성" },
+          { "type": "image", "src": "p2_Style_Guide", "alt": "남색과 분홍색을 이용한 컬러 구성과 로고, 버튼, 속성들에 대한 가이드" }
+        ]
+      },
+      {
+        "title": "퍼블리싱",
+        "blocks": [
+          { "type": "text", "content": "· React 환경에서 HTML, CSS, JavaScript를 이용한 주요 25p 화면 퍼블리싱" },
+          { "type": "text", "content": "· PC환경에서도 모바일 웹페이지 제공을 위한 Layout 구성" },
+          { "type": "text", "content": "· 공통 영역 Header, NavBar 위치 제공 및 Router 구성" },
+          { "type": "image", "src": "p2_Layout", "alt": "App.jsx에서 Layout.jsx를 호출하여 공통된 Layout 구성, position: sticky로 공통 영역 고정, window.scrollY로 스크롤 시 top버튼 생성" },
+          { "type": "text", "content": "· 협업 및 유지보수를 위한 assets, conponents, hook, page,  router 폴더 구성" },
+          { "type": "image", "src": "p2_folder", "alt": "css, js, views 폴더 분리" }
+        ]
+      },
+      {
+        "title": "라우터 및 hook 작성",
+        "blocks": [
+          { "type": "text", "content": "· App.jsx에서 하나의 MainRouter를 호출하여 각 서비스 페이지에 연결되도록 Router 구성" },
+          { "type": "image", "src": "p2_Router", "alt": "PC 화면의 admin은 모바일 Layout에 적용되지 않도록 분리, MainRouter 호출, MainRouter에서 서비스별 페이지 호출" },
+          {
+            "type": "code",
+            "language": "java",
+            "content": "@PostMapping(\"/start\")\npublic ResponseEntity<Long> startTimer(@RequestBody Map<String, Long> request) {\n  Long user_idx = request.get(\"user_idx\");\n //공부 시작 시 actibityStatus 업데이트\n Users user = userMapper.findById(user_idx);\n  if (user != null) {\n    user.setActivityStatus(Users.ActivityStatus.STUDYING);\n    userMapper.updateActivityStatus(user_idx, user.getActivityStatus());\n  }\n  long recordIdx = timerService.startTimer(user_idx);\n  return ResponseEntity.ok(recordIdx);\n}"
+          },
+          {
+            "type": "code",
+            "language": "java",
+            "content": "@Options(useGeneratedKeys = true, keyProperty = \"record_idx\", keyColumn = \"record_idx\")\nvoid insertStartTime(TimerEntity timerEntity);"
+          },
+          { "type": "text", "content": "· 전체 화면 제공으로 Header 또는 NavBar가 없는 일부 페이지를 위한 hook 작성" },
+          { "type": "subtext", "content": "- useEffect로 컴포넌트 렌더링 시 작업 수행" },
+          { "type": "subtext", "content": "- 매개변수로 location.pathname을 받아 페이지 디렉토리에 따른 hook 작동 함수 적용" },
+          {
+            "type": "code",
+            "language": "javascript",
+            "content": "const useOnlyHeaderColorChange = (location, changeColor) => {함수};"
+          },
+          { "type": "subtext", "content": "- Header 제거 시, 페이지 이동을 위한 이전 페이지 이동 헤더 <PageHeader/> 추가" },
+          { "type": "subtext", "content": "- 함수 호출 시 받은 changeColor로 PageHeder 배경색 변화" },
+          {
+            "type": "code",
+            "language": "javascript",
+            "content": "const useHeaderColorChange = (location, changeColor) => {함수};"
+          }
+        ]
+      },
+      {
+        "title": "api를 통해 받아온 데이터 처리",
+        "blocks": [
+          { "type": "text", "content": "· 백엔드에서 OCR을 이용해 받아온 데이터 출력 및 계산" },
+          { "type": "image", "src": "p2_OCR", "alt": "OCR 적용 화면" },
+          { "type": "subtext", "content": "- 영수증 버튼에 onClick으로 {handleFileChange} 함수 호출 및 userState 값 변경" },
+          {
+            "type": "code",
+            "language": "javascript",
+            "content": "const handleFileChange = async (e) => {\n    const selectedFile = e.target.files[0];\n    setFile(selectedFile);\n\n    if (selectedFile) {\n        const formData = new FormData();\n        formData.append('uploadFile', selectedFile);\n\n        try {\n            const response = await axios.post('http://localhost:8080/api/Calculator', formData, {\n                headers: {\n                    'Content-Type': 'multipart/form-data',\n                },\n            });\n\n            if (response.data && response.data.text) {\n                const ocrData = JSON.parse(response.data.text);\n                setOcrResponse(ocrData.ocrResponse);\n                setBase64Image(`data:image/jpeg;base64,${response.data.imageUrl}`);\n                setReciptImage(true);\n\n                processOCRResponse(ocrData.ocrResponse);\n            } else {\n                alert('OCR 처리에 실패했습니다.');\n            }\n        } catch (error) {\n            //console.error('Error uploading file:', error);\n            alert('파일 업로드 중 오류가 발생했습니다.');\n        }\n    }\n};"
+          },
+          { "type": "subtext", "content": "- 입력서식에 onChange 함수로 저장된 값 출력" },
+          { "type": "subtext", "content": "- 저장되는 값은 format함수를 이용하여 계산 가능한 숫자로 변경 및 계산, useState 값에 따라 출력되는 화면 설정" },
+          {
+            "type": "code",
+            "language": "javascript",
+            "content": "// '합계'와 같은 단어를 올바르게 처리하기 위한 조정\nif (text.includes('합') && i + 1 < fields.length) {\n    const nextText = removeSpaces(fields[i + 1].inferText.trim());\n    if (nextText.startsWith('계')) {\n        text = '합계';\n        i++;\n    } else if (nextText.includes('금액')) {\n        text = '합계 금액';\n        i++;\n    }\n}\n\n// 공백 및 특수 문자를 제거하여 텍스트를 정규화\nconst normalizedText = removeSpaces(text.replace(/[^\\w\\sㄱ-ㅎㅏ-ㅣ가-힣]/g, ''));\n\n// 총액을 나타낼 수 있는 모든 키워드에 대해 비교\nconst isKeywordMatch = TOTAL_AMOUNT_KEYWORDS.some(keyword =>\n    removeSpaces(keyword.replace(/[^\\w\\sㄱ-ㅎㅏ-ㅣ가-힣]/g, '')).includes(normalizedText)\n);\n\nif (isKeywordMatch) {\n    // 다음 필드가 금액일 경우\n    if (i + 1 < fields.length) {\n        const nextText = removeSpaces(fields[i + 1].inferText.trim());\n        // 금액을 식별하기 위한 정규 표현식\n        const amountRegex = /^\\d{1,3}(,\\d{3})*(\\.\\d+)?(원)?$/;\n        if (amountRegex.test(nextText)) {\n            extractedAmount = nextText.replace(/원/g, ''); // '원' 제거\n            foundAmount = true;\n        }\n    }\n}\n});\n\nif (foundAmount) {\n    // 점을 쉼표로 변경\n    const formattedAmount = extractedAmount.replace(/\\.(?=\\d)/g, ',');\n    setTotalAmount(formattedAmount.replace(/,/g, '')); // 포맷을 변경한 금액 저장\n    setResultText(formattedAmount); // 금액만 저장 (단위 없음)\n} else {\n    setTotalAmount('');\n    setResultText('총액을 찾을 수 없습니다.'); // 총액을 찾지 못한 경우 메시지 표시\n};"
+          },
+          { "type": "subtext", "content": "- 영수증 입력 후 1인당 금액 계산 함수 작성" },
+          {
+            "type": "code",
+            "language": "javascript",
+            "content": "const handleCalculate = () => {\n if(입력값이 잘 못 된 경우){오류내용 출력} else {계산하여 출력}\n};"
+          },
+          { "type": "text", "content": "· 지도 api를 통해 제공받은 음식점 정보 출력" },
+          { "type": "image", "src": "p2_map", "alt": "useEffect로 음식점 정보를 axios.get하여 json형태로 저장, 저장된 정보를 3개 객체만 출력하도록 sortedNearbyPub.slice(0, 3); 함수 사용, useContext로 저장된 레시피 목록 중 좋아요 상위 3개 출력" },
+          {
+            "type": "code",
+            "language": "javascript",
+            "content": "useEffect(() => {\n const fetchRecipes = async () => { try, catct, finally} fetchRecipes();\n },[earchKeyword, category, sort, size])"
+          },
+          { "type": "text", "content": "· React slick을 이용한 slide 컴포넌트 생성" },
+          { "type": "subtext", "content": "- SliderComponent로 분리하여 각 페이지에서 호출하도록 제작" },
+          { "type": "image", "src": "p2_slide", "alt": "RecommendedCategories, FoodCategiries 적용 화면" },
+          {
+            "type": "code",
+            "language": "javascript",
+            "content": "const RecommendedCategories(() => {\n const recommendedCategoriesSettings = {슬라이더 설정}; return ();\n });"
+          },
+          { "type": "text", "content": "· ref값을 설정하여 useCallback hook을 이용한 페이지 무한 로딩 구현" },
+          { "type": "image", "src": "p2_load", "alt": "마지막 항목이 lastPubElementRef가 되도록 ref 설정" },     
+          {
+            "type": "code",
+            "language": "javascript",
+            "content": "const lastPubElementRef = useCallback(node => {\n observer 값에 따라 다음 항목 로딩 여부 결정\n}, [loadMorePubs]);"
+          }
+        ]
+      }
+    ]
+  },
+  {
     "id": 1,
     "title": "All’s",
     "subtitle" : "Team Project 1 ",
@@ -7,7 +219,7 @@
     "git": "https://github.com/Jihyeon818/All-s_project",
     "gitname": "Jihyeon818",
     "duration": "2024.06 ~ 2024.07",
-    "teamSize": "6명",
+    "teamSize": "5명",
     "contributions": [
       { "role": "기획", "percentage": "45%" },
       { "role": "디자인", "percentage": "100%" },
@@ -34,32 +246,32 @@
       {
         "title": "화면설계 및 디자인",
         "blocks": [
-          { "type": "text", "content": "기획 내용을 바탕으로 피그마를 이용한 전체 35p 화면 디자인" },
+          { "type": "text", "content": "· 기획 내용을 바탕으로 피그마를 이용한 전체 35p 화면 디자인" },
           { "type": "image", "src": "p1_UI", "alt": "메인부터 전체 35개 페이지 화면 구성" },
-          { "type": "text", "content": "메인 컬러 및 스타일 가이드 작성" },
+          { "type": "text", "content": "· 메인 컬러 및 스타일 가이드 작성" },
           { "type": "image", "src": "p1_design_guide", "alt": "초록과 베이지를 이용한 컬러 구성과 로고, 버튼, 속성들에 대한 가이드" }
         ]
       },
       {
         "title": "퍼블리싱",
         "blocks": [
-          { "type": "text", "content": "JSP환경에서 HTML, CSS, JavaScript를 이용한 전체 화면 퍼블리싱" },
-          { "type": "text", "content": "grid를 이용한 레이아웃 구성" },
-          { "type": "text", "content": "@media를 이용한 반응형 웹 구현" },
-          { "type": "image", "src": "p1_grid", "alt": "설명4" },
-          { "type": "text", "content": "협업 및 유지보수를 위한 공통 CSS, JavaScript 분리 및 폴더 구성" },
+          { "type": "text", "content": "· JSP환경에서 HTML, CSS, JavaScript를 이용한 전체 화면 퍼블리싱" },
+          { "type": "text", "content": "· grid를 이용한 레이아웃 구성" },
+          { "type": "text", "content": "· @media를 이용한 반응형 웹 구현" },
+          { "type": "image", "src": "p1_grid", "alt": "화면 크기에 따른 그리드 구성" },
+          { "type": "text", "content": "· 협업 및 유지보수를 위한 공통 CSS, JavaScript 분리 및 폴더 구성" },
           { "type": "image", "src": "p1_file_folder", "alt": "css, js, views 폴더 분리" }
         ]
       },
       {
         "title": "타이머 기능 개발",
         "blocks": [
-          { "type": "text", "content": "기능 구현을 위한 로직 구상" },
+          { "type": "text", "content": "· 기능 구현을 위한 로직 구상" },
           { "type": "image", "src": "p1_timer", "alt": "타이머 기능 구현을 위한 기능 상세, 전송값, 리턴, 이벤트 등을 구현 순서에 따라 내용 작성" },
           
-          { "type": "text", "content": "DB Table 생성 및 백엔드 mapping" },
-          { "type": "text", "content": "- Spring 구조에 따라 entity → mapper → service → controller 구성" },
-          { "type": "text", "content": "- Spring Security에 mapping 주소 허용 처리" },
+          { "type": "text", "content": "· DB Table 생성 및 백엔드 mapping" },
+          { "type": "subtext", "content": "- Spring 구조에 따라 entity → mapper → service → controller 구성" },
+          { "type": "subtext", "content": "- Spring Security에 mapping 주소 허용 처리" },
           { "type": "image", "src": "p1_timer_DB", "alt": "타이머 DB구성" },
           {
             "type": "code",
@@ -77,24 +289,24 @@
             "content": "public long startTimer(Long user_idx) {\n  timerEntity.setUser_idx(user_idx);\n  timerMapper.insertStartTime(timerEntity);\n  return timerEntity.getRecord_idx();\n}"
           },
 
-          { "type": "text", "content": "프론트엔드 화면 구성 및 데이터 처리" },
-          { "type": "text", "content": "- SetInterval을 이용하여 시/분/초 단위로 측정 시간 제공" },
-          { "type": "text", "content": "- ajax로 화면 변화 없이 데이터 전송 처리" },
-          { "type": "text", "content": "- security 적용을 위해 csrf토큰 변수 포함" },
+          { "type": "text", "content": "· 프론트엔드 화면 구성 및 데이터 처리" },
+          { "type": "subtext", "content": "- SetInterval을 이용하여 시/분/초 단위로 측정 시간 제공" },
+          { "type": "subtext", "content": "- ajax로 화면 변화 없이 데이터 전송 처리" },
+          { "type": "subtext", "content": "- security 적용을 위해 csrf토큰 변수 포함" },
           { "type": "image", "src": "p1_timer_detail", "alt": "SetInterval을 이용한 타이머와 PauseTimer, endTimer, Memo 기록 시 해당 시간 시/분/초를 DB로 전달 과정정" }
         ]
       },
       {
         "title": "라이브러리 사용",
         "blocks": [
-          { "type": "text", "content": "Swiper를 이용한 slide 구현" },
-          { "type": "image", "src": "p1_slide", "alt": "slide적용 화면면" },
+          { "type": "text", "content": "· Swiper를 이용한 slide 구현" },
+          { "type": "image", "src": "p1_slide", "alt": "slide적용 화면" },
           {
             "type": "code",
             "language": "javascript",
             "content": "var mySwiper = new Swiper('.swiper-container', {\n  spaceBetween: 10, // 슬라이드 사이 여백\n  slidesPerView: 1, // 한 슬라이드에 보여줄 갯수\n\n  // 반응형 옵션\n  breakpoints: {\n    // 768px 이상에서는 3개의 슬라이드를 보여줌\n    1000: {\n      spaceBetween: 10,\n      slidesPerView: 3\n    }\n  },\n\n  navigation: {\n    nextEl: '.swiper-button-next',\n    prevEl: '.swiper-button-prev'\n  }\n});"
           },
-          { "type": "text", "content": "Chart.js를 이용한 주간, 월간 차트 구현" },
+          { "type": "text", "content": "· Chart.js를 이용한 주간, 월간 차트 구현" },
           { "type": "image", "src": "p1_chart", "alt": "주간, 월간 차트" },
           {
             "type": "code",

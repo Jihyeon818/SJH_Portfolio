@@ -13,15 +13,27 @@ import p1_timer_mapping from "./project1/project1_timer_mapping.png";
 import p1_UI from "./project1/project1_UI.png";
 
 // project2
-import p2_assets_folder from "./project2/project2_assets_folder.png";
-import p2_component_folder from "./project2/project2_component_folder.png";
+import p2_folder from "./project2/project2_folder.png";
 import p2_Devices from "./project2/project2_Devices.png";
 import p2_map from "./project2/project2_map.png";
 import p2_OCR from "./project2/project2_OCR.png";
-import p2_pages_folder from "./project2/project2_pages_folder.png";
-import p2_Router_folder from "./project2/project2_Router_folder.png";
 import p2_Style_Guide from "./project2/project2_Style_Giude.png";
+import p2_thumbnail from "./project2/project2_thumbnail.png"
 import p2_UI from "./project2/project2_UI.png";
+import p2_Layout from "./project2/project2_Layout.png"
+import p2_Router from "./project2/project2_Router.png"
+import p2_slide from "./project2/project2_slide.png"
+import p2_load from "./project2/project2_load.png"
+
+// project3
+import p3_thumbnail from "./project3/project3_thumbnail.png";
+import p3_Devices from "./project3/project3_Devices.png";
+import p3_UI from "./project3/project3_UI.png";
+import p3_main from "./project3/project3_main.png";
+import p3_projectDetail from "./project3/project3_projectDetail.png";
+import p3_jsonData from "./project3/project3_jsonData.png";
+import p3_skills from "./project3/project3_skills.png";
+import p3_scrollAOS from "./project3/project3_scrollAOS.png";
 
 // root-level device images
 import laptop from "./laptop.png";
@@ -48,15 +60,27 @@ export {
   p1_UI,
 
   // project2
-  p2_assets_folder,
-  p2_component_folder,
+  p2_folder,
   p2_Devices,
   p2_map,
   p2_OCR,
-  p2_pages_folder,
-  p2_Router_folder,
   p2_Style_Guide,
+  p2_thumbnail,
   p2_UI,
+  p2_Layout,
+  p2_Router,
+  p2_slide,
+  p2_load,
+
+  // project3
+  p3_thumbnail,
+  p3_Devices,
+  p3_UI,
+  p3_main,
+  p3_projectDetail,
+  p3_jsonData,
+  p3_skills,
+  p3_scrollAOS,
 
   // device mockups
   laptop,

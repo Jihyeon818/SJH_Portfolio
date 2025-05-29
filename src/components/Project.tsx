@@ -7,7 +7,10 @@ import Prism from 'prismjs';
 import 'prismjs/themes/prism.css';
 import 'prismjs/components/prism-typescript.min';
 import { skillIcons } from "../components/skillIcons";
-import { p1_Devices, p1_UI, p1_timer_detail, p1_grid, p1_design_guide, p1_file_folder, p1_timer, p1_timer_DB, p1_slide, p1_chart } from "../images/index";
+import { p1_Devices, p1_UI, p1_timer_detail, p1_grid, p1_design_guide, p1_file_folder, p1_timer, p1_timer_DB, p1_slide, p1_chart,
+  p2_UI, p2_Style_Guide, p2_Devices, p2_Layout, p2_folder, p2_Router, p2_OCR, p2_map, p2_slide, p2_load,
+  p3_Devices, p3_UI, p3_main, p3_projectDetail, p3_jsonData, p3_skills, p3_scrollAOS
+ } from "../images/index";
 import { FaGithub } from "react-icons/fa";
 
 type ProjectDetailPopupProps = {
@@ -17,10 +20,10 @@ type ProjectDetailPopupProps = {
 
 const ProjectDetailPopup = ({ onClose, projectId }: ProjectDetailPopupProps) => {
   const [loaded, setLoaded] = useState(false);
-  
+  const [fullscreenImage, setFullscreenImage] = useState<string | null>(null); // 👈 추가
   const project = projectData.find((p) => p.id === projectId);
 
-    const handleOverlayClick = (e: React.MouseEvent<HTMLDivElement>) => {
+  const handleOverlayClick = (e: React.MouseEvent<HTMLDivElement>) => {
     // 팝업 바깥쪽(암막)이 눌렸는지 확인
     if (e.target === e.currentTarget) {
       onClose();
@@ -28,22 +31,10 @@ const ProjectDetailPopup = ({ onClose, projectId }: ProjectDetailPopupProps) => 
   };
 
   const imageMap: { [key: string]: string } = {
-    p1_Devices,
-    p1_UI,
-    p1_timer_detail,
-    p1_grid,
-    p1_design_guide,
-    p1_file_folder,
-    p1_timer,
-    p1_timer_DB,
-    p1_slide,
-    p1_chart
+    p1_Devices, p1_UI, p1_timer_detail, p1_grid, p1_design_guide, p1_file_folder, p1_timer, p1_timer_DB, p1_slide, p1_chart,
+    p2_UI, p2_Style_Guide, p2_Devices, p2_Layout, p2_folder, p2_Router, p2_OCR, p2_map, p2_slide, p2_load,
+    p3_Devices, p3_UI, p3_main, p3_projectDetail, p3_jsonData, p3_skills, p3_scrollAOS
   };
-
-  useEffect(() => {
-    AOS.init({ duration: 800 });
-  }, []);
-
   
   useEffect(() => {
     Prism.highlightAll();
@@ -54,19 +45,103 @@ const ProjectDetailPopup = ({ onClose, projectId }: ProjectDetailPopupProps) => 
       return () => clearTimeout(timer);
     }, []);
 
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape' || e.key === 'Enter' || e.key === ' ') {
+        onClose();
+      }
+    };
+    window.addEventListener('keydown', handleKeyDown);
+    return () => {
+      window.removeEventListener('keydown', handleKeyDown);
+    };
+  }, [onClose]);
+
+  const openImageFullscreen = (src: string) => {
+    setFullscreenImage(src);
+  };
+
+    const closeImageFullscreen = () => {
+      setFullscreenImage(null);
+    };
+
+  useEffect(() => {
+    AOS.init({ duration: 800 });
+  }, []);
+
+  useEffect(() => {
+    // 프로젝트가 바뀔 때 Prism 및 AOS 리프레시
+    Prism.highlightAll();
+    AOS.refresh();
+  }, [projectId]);
+
+  useEffect(() => {
+    // 약간의 지연 후 loaded 상태 → transition 용
+    const timer = setTimeout(() => setLoaded(true), 100);
+    return () => clearTimeout(timer);
+  }, []);
+
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape' || e.key === 'Enter' || e.key === ' ') {
+        onClose();
+      }
+    };
+    window.addEventListener('keydown', handleKeyDown);
+    return () => {
+      window.removeEventListener('keydown', handleKeyDown);
+    };
+  }, [onClose]);
+
+    // 이미지 로드 시마다 AOS 위치 다시 계산
+  useEffect(() => {
+    const images = document.querySelectorAll<HTMLImageElement>('.project-popup img'); // ✅ 타입 지정
+    let loadedImages = 0;
+
+    images.forEach((img) => {
+      if (img.complete) {
+        loadedImages++;
+        if (loadedImages === images.length) {
+          AOS.refresh();
+        }
+      } else {
+        img.addEventListener('load', () => {
+          loadedImages++;
+          if (loadedImages === images.length) {
+            AOS.refresh();
+          }
+        });
+      }
+    });
+  }, [projectId]);
+
+
   if (!project) return null;
 
   return (
     <div className="fixed inset-0 z-50 bg-black bg-opacity-50 overflow-y-auto" aria-modal="true" onClick={handleOverlayClick}>
+      {/* 이미지 전체 화면 팝업 */}
+      {fullscreenImage && (
+        <div
+          className="fixed inset-0 z-50 bg-black bg-opacity-80 flex items-center justify-center cursor-zoom-out"
+          onClick={closeImageFullscreen}
+          tabIndex={-1}
+          role="dialog"
+          aria-label="이미지 확대 보기"
+        >
+          <img
+            src={fullscreenImage}
+            alt="fullscreen"
+            className="max-w-[90%] max-h-[90%] rounded shadow-2xl transition-transform duration-300 ease-in-out transform scale-100 opacity-100 animate-zoom-in"
+          />
+        </div>
+      )}
+
       {/* 팝업 박스 */}
       <div className="relative bg-white w-full max-w-5xl mx-auto mt-20 mb-10 p-10 rounded-xl shadow-lg z-20">
-        {/* 닫기 버튼
-        <button
-          onClick={onClose}
-          className="absolute top-4 right-4 text-gray-500 hover:text-black text-2xl"
-        >
+        <button onClick={onClose} className="absolute top-8 right-6 text-gray-500 hover:text-black text-2xl" aria-label="닫기">
           &times;
-        </button> */}
+        </button>
 
         {/* 상단 소개 (이미지 + 설명) */}
         <div className="flex flex-col lg:flex-row gap-6 mb-10" data-aos="fade-up">
@@ -209,7 +284,7 @@ const ProjectDetailPopup = ({ onClose, projectId }: ProjectDetailPopupProps) => 
 
 
         {/* 상세 섹션들 */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 transition-all duration-500 min-h-[200px]">
           {project.details.map((section, sectionIdx) => (
             <div key={sectionIdx} className="space-y-2" data-aos="fade-up">
               <div className="flex items-center gap-4 mb-2">
@@ -220,13 +295,24 @@ const ProjectDetailPopup = ({ onClose, projectId }: ProjectDetailPopupProps) => 
               {section.blocks?.map((block: any, i: number) => {
                 if (block.type === "text") {
                   return <p key={i} className="text-sm">{block.content}</p>;
+                } else if (block.type === "subtext") {
+                  return <p key={i} className="text-xs pl-1 text-[#353535]">{block.content}</p>;
                 } else if (block.type === "image") {
                   return (
                     <img
                       key={i}
                       src={imageMap[block.src]}
                       alt={block.alt}
-                      className="rounded shadow-md"
+                      tabIndex={0}
+                      role="button"
+                      className="rounded shadow-md cursor-zoom-in"
+                      onClick={() => openImageFullscreen(imageMap[block.src])}
+                      onKeyDown={(e) => {
+                      if (e.key === "Enter" || e.key === " ") {
+                        openImageFullscreen(imageMap[block.src]);
+                        e.preventDefault();
+                      }
+                      }}
                     />
                   );
                 } else if (block.type === "image-group") {
@@ -237,14 +323,27 @@ const ProjectDetailPopup = ({ onClose, projectId }: ProjectDetailPopupProps) => 
                           key={j}
                           src={imageMap[img.src]}
                           alt={img.alt}
-                          className="rounded shadow-md w-1/3"
+                          tabIndex={0}
+                          role="button" 
+                          className="rounded shadow-md w-1/3 cursor-zoom-in"
+                          onClick={() => openImageFullscreen(imageMap[img.src])}
+                          onKeyDown={(e) => {
+                          if (e.key === "Enter" || e.key === " ") {
+                            openImageFullscreen(imageMap[block.src]);
+                            e.preventDefault();
+                          }
+                          }}
                         />
                       ))}
                     </div>
                   );
                 } else if (block.type === "code") {
                   return (
-                    <pre key={i}   className="bg-gray-900 text-white font-mono rounded p-4 overflow-x-auto whitespace-pre" style={{ fontSize: "0.5em", lineHeight: "1.4" }}>
+                    <pre 
+                      key={i} 
+                      className="bg-gray-900 text-white font-mono rounded p-4 overflow-x-auto whitespace-pre max-h-40  custom-scrollbar" 
+                      style={{ fontSize: "0.5em", lineHeight: "1.4" }}
+                    >
                       <code className={`language-${block.language}`}>
                         {block.content}
                       </code>
