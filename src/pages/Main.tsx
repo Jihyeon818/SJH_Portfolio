@@ -1,11 +1,12 @@
 import React, { useState, useEffect, useRef } from 'react';
-import ProjectDetailPopup from '../components/Project';
+import Project from '../components/Project';
 import projectData from "../data/projects.json";
+import Career from "../components/Career";
 import { p1_thumbnail, headers, ncloud, developBG, p2_thumbnail, p3_thumbnail } from "../images/index";
 import { skillIcons } from "../components/skillIcons";
-import { IoIosArrowUp, IoIosArrowBack , IoIosArrowForward  } from "react-icons/io";
-import { FaRegFilePdf } from "react-icons/fa6";
-import PdfModal from "../components/PdfModal";
+import { IoIosArrowUp, IoIosArrowBack , IoIosArrowForward, IoIosAdd  } from "react-icons/io";
+// import { FaRegFilePdf } from "react-icons/fa6";
+// import PdfModal from "../components/PdfModal";
 import ScrollToTopButton from '../components/ScrollToTopButton'; 
 
 const Main = () => {
@@ -15,6 +16,7 @@ const Main = () => {
   const categories = ["Front-end", "Back-end", "DevOps", "Cooperation", "tool"] as const;
   const [tooltip, setTooltip] = useState<string | null>(null);
   const [isPdfOpen, setIsPdfOpen] = useState(false);
+  const [careerOpen, setCareerOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -312,7 +314,7 @@ const Main = () => {
             </div>
 
             {isPopupOpen && selectedProjectId !== null && (
-              <ProjectDetailPopup onClose={closePopup} projectId={selectedProjectId} />
+              <Project onClose={closePopup} projectId={selectedProjectId} />
             )}
           </section>
         </div>
@@ -334,7 +336,7 @@ const Main = () => {
               <div className="flex-1 min-w-0">
                 <div className="flex items-center space-x-2">
                   <h4 className="font-bold">주식회사 헤더스</h4>
-                  <button
+                  {/* <button
                     onClick={() => setIsPdfOpen(true)}
                     className="flex gap-1 items-center text-xs px-2 py-1 border-2 border-yellow-300 rounded-md animate-pulse hover:animate-none"
                     >
@@ -344,8 +346,22 @@ const Main = () => {
                   <PdfModal
                     isOpen={isPdfOpen}
                     onClose={() => setIsPdfOpen(false)}
-                    pdfUrl="/companyExperience.pdf"
-                  />
+                    pdfUrl="/SJH_Portfolio/companyExperience.pdf"
+                  /> */}
+
+                  <button
+                    onClick={() => setCareerOpen(true)}
+                    className=" group inline-flex items-center gap-1 pl-2 pr-1 bg-[#E0E5CF] rounded-md text-[#1d5b39] font-medium hover:text-[#0f2d41] transition"
+                  >
+                    more
+                    <IoIosAdd 
+                      className="transform transition-transform duration-500 group-hover:rotate-[360deg]"
+                      size={18}
+                    />
+                  </button>
+
+                  <Career open={careerOpen} onClose={() => setCareerOpen(false)} />
+
                 </div>
                 <p className="text-sm mt-2">
                   2018.04 ~ 2024.01 <span className="text-[#0f2d41]">| IT컨설팅팀 · 선임 6년차· 웹표준·웹접근성</span>

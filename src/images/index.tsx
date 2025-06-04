@@ -43,6 +43,18 @@ import headers from "./headers_logo.png";
 import ncloud from "./ncloud.png";
 import developBG from "./developBG.jpg";
 
+// career
+import career1_1 from "./career/career1_1.png";
+import career1_2 from "./career/career1_2.png";
+import career1_3 from "./career/career1_3.png";
+import career2_1 from "./career/career2_1.png";
+import career2_2 from "./career/career2_2.png";
+import career2_3 from "./career/career2_3.png";
+import career2_4 from "./career/career2_4.png";
+import career3_1 from "./career/career3_1.png";
+import career3_2 from "./career/career3_2.png";
+
+
 // export all
 export {
   // project1
@@ -88,6 +100,17 @@ export {
   tablet,  
   headers,
   ncloud,
-  developBG
+  developBG,
+
+  //career
+  career1_1,
+  career1_2,
+  career1_3,
+  career2_1,
+  career2_2,
+  career2_3,
+  career2_4,
+  career3_1,
+  career3_2,
 };
 
